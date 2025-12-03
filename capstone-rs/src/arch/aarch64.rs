@@ -164,6 +164,9 @@ pub struct AArch64Operand {
 
     /// Operand type
     pub op_type: AArch64OperandType,
+    
+    // Is the operand a vector register
+    pub is_vreg: bool,
 }
 
 /// AARCH64 operand
@@ -349,6 +352,7 @@ impl Default for AArch64Operand {
             shift: AArch64Shift::Invalid,
             ext: AArch64Extender::AARCH64_EXT_INVALID,
             op_type: AArch64OperandType::Invalid,
+            is_vreg: false,
         }
     }
 }
@@ -480,6 +484,7 @@ impl From<&cs_aarch64_op> for AArch64Operand {
             shift,
             ext: op.ext,
             op_type,
+            is_vreg: op.is_vreg,
         }
     }
 }
