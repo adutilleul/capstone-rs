@@ -151,6 +151,7 @@ fn build_capstone_cc() {
         .define("CAPSTONE_USE_SYS_DYN_MEM", None)
         // No need to display any warnings from the C library
         .flag_if_supported("-w")
+        .flag_if_supported("-std=c17")
         .static_crt(use_static_crt);
 
     macro_rules! arch_define {
