@@ -1400,18 +1400,21 @@ fn test_arch_arm_post_index() {
 
     let insn = insns[0];
     let detail = cs.insn_detail(insn).expect("Could not get detail");
+    assert!(!detail.writeback());
     let arch_detail = detail.arch_detail();
     let arm_detail = arch_detail.arm().expect("Failed to get arm detail");
     assert_eq!(false, arm_detail.post_index());
 
     let insn = insns[1];
     let detail = cs.insn_detail(insn).expect("Could not get detail");
+    assert!(detail.writeback());
     let arch_detail = detail.arch_detail();
     let arm_detail = arch_detail.arm().expect("Failed to get arm detail");
     assert_eq!(true, arm_detail.post_index());
 
     let insn = insns[2];
     let detail = cs.insn_detail(insn).expect("Could not get detail");
+    assert!(detail.writeback());
     let arch_detail = detail.arch_detail();
     let arm_detail = arch_detail.arm().expect("Failed to get arm detail");
     assert_eq!(false, arm_detail.post_index());
@@ -1440,18 +1443,21 @@ fn test_arch_aarch64_post_index() {
 
     let insn = insns[0];
     let detail = cs.insn_detail(insn).expect("Could not get detail");
+    assert!(!detail.writeback());
     let arch_detail = detail.arch_detail();
     let aarch64_detail = arch_detail.aarch64().expect("Failed to get aarch64 detail");
     assert_eq!(false, aarch64_detail.post_index());
 
     let insn = insns[1];
     let detail = cs.insn_detail(insn).expect("Could not get detail");
+    assert!(detail.writeback());
     let arch_detail = detail.arch_detail();
     let aarch64_detail = arch_detail.aarch64().expect("Failed to get aarch64 detail");
     assert_eq!(false, aarch64_detail.post_index());
 
     let insn = insns[2];
     let detail = cs.insn_detail(insn).expect("Could not get detail");
+    assert!(detail.writeback());
     let arch_detail = detail.arch_detail();
     let aarch64_detail = arch_detail.aarch64().expect("Failed to get aarch64 detail");
     assert_eq!(true, aarch64_detail.post_index());

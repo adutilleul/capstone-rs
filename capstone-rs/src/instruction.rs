@@ -436,6 +436,12 @@ impl Display for OwnedInsn<'_> {
 }
 
 impl InsnDetail<'_> {
+    /// Whether this instruction writes an updated address back to a register.
+    #[inline]
+    pub fn writeback(&self) -> bool {
+        self.detail.writeback
+    }
+
     #[cfg(feature = "full")]
     /// Returns the read registers
     pub fn regs_read(&self) -> &[RegId] {
